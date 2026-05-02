@@ -5,6 +5,7 @@ import os
 
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 MANAGER_ID = int(os.getenv("MANAGER_ID"))
+ADMIN_IDS = [5004870921, 5139970065, 6785796450]
 
 user_data = {}
 user_step = {}
@@ -67,6 +68,11 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def handle_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query
     await query.answer()
+
+    # 🔒 CHECK ADMIN (phải thụt vào)
+    if query.from_user.id not in ADMIN_IDS:
+        await query.message.reply_text("⚠️ Bạn không có quyền duyệt")
+        return
 
     action, uid = query.data.split("_")
     uid = int(uid)
