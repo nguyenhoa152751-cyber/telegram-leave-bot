@@ -5,7 +5,7 @@ import os
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 MANAGER_ID = int(os.getenv("MANAGER_ID"))
 
-ADMIN_IDS = [5004870921, 5139970065, 6785796450]
+ADMIN_IDS = [5004870921, 5139970065, 1949773917]
 
 user_data = {}
 user_step = {}
